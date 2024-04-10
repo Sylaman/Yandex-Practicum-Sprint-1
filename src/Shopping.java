@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Shopping {
@@ -31,12 +32,13 @@ public class Shopping {
                 }
                 if (isDuplicate) {
                     System.out.println("Такой товар уже есть в списке");
-                } else if (productCount == shoppingList.length) {
-                    System.out.println("Достигнут лимит количества товаров. Товар не был добавлен!");
                 } else {
                     shoppingList[productCount] = productName;
                     productCount++;
                     System.out.println("Товар " + productName + " добавлен в список под номером " + productCount);
+                    if (productCount == shoppingList.length) {
+                        shoppingList = Arrays.copyOf(shoppingList, shoppingList.length * 2);
+                    }
                 }
             } else if (actionNumber == 2) {
                 for (int i = 1; i <= productCount; i++) {
